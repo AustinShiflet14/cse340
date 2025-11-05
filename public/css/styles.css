@@ -4,3 +4,83 @@
 *:after {
   box-sizing: border-box;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('/images/site/checkerboard.jpg');
+  background-size: 80px 80px;
+  margin: 0;
+}
+
+main {
+  background-color: white;
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 3px solid lightblue;
+  border-radius: 10px;
+}
+
+.hero {
+  text-align: center;
+}
+
+.delorean-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.delorean-img {
+  width: 60%;
+  max-width: 400px;
+  margin-right: 20px;
+}
+
+.delorean-info {
+  text-align: left;
+}
+
+.own-btn {
+  background-color: #0099ff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.upgrades, .reviews {
+  width: 45%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.grid div {
+  text-align: center;
+}
+
+footer {
+  font-size: 0.9em;
+  color: #444;
+  padding: 10px;
+}
+
+.siteName {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
