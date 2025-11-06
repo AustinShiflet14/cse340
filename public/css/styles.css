@@ -5,21 +5,16 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
+html {
   background-image: url('/images/site/checkerboard.jpg');
-  background-size: 80px 80px;
-  margin: 0;
 }
 
-main {
+body {
   background-color: white;
-  width: 90%;
   max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
   border: 3px solid lightblue;
   border-radius: 10px;
+  margin: 20px auto;
 }
 
 .hero {
@@ -39,7 +34,18 @@ main {
   margin-right: 20px;
 }
 
+.upgrades, .reviews {
+  max-width: 75%;
+  margin: 20px auto;
+}
 .delorean-info {
+  background-color: rgba(220, 220, 220, 0.4);
+  padding: 20px;
+  border-radius: 20px;
+  color: #0099ff;
+}
+
+.delorean-info li {
   text-align: left;
 }
 
@@ -52,25 +58,27 @@ main {
   cursor: pointer;
 }
 
-.details {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-  flex-wrap: wrap;
-}
-
-.upgrades, .reviews {
-  width: 45%;
-}
-
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  grid-template-rows: 1fr 1fr;
+  gap: 30px;
+  padding: 20px;
 }
 
 .grid div {
   text-align: center;
+}
+
+.grid img {
+  background-color: #0099ff;
+  padding: 20px;
+  max-width: 100px;
+  height: 100px;
+}
+
+.reviews li {
+  margin-top: 30px;
 }
 
 footer {
@@ -80,7 +88,55 @@ footer {
 }
 
 .siteName {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  font-size: 2rem;
+  color: black;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.siteName a {
+  text-decoration: none;
+  color: black;
+}
+
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+#tools {
+  font-size: 1.25rem;
+}
+
+#tools a {
+  text-decoration: none;
+  color: black;
+  margin-left: 15px;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+  justify-content: space-around;
+  font-size: 1.25rem;
+  list-style-type: none;
+  padding: 10px;
+  color: white;
+}
+
+@media screen and (min-width: 600px) {
+  .details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: left;
+  }
+  .upgrades, .reviews {
+    width: 45%;
+    margin: 20px auto;
+  }
 
 }
