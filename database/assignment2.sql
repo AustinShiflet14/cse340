@@ -2,7 +2,7 @@ INSERT INTO account (account_firstname, account_lastname, account_email, account
 VALUES ('Tony', 'Stark', 'tony@starkent.com', 'Iam1ronM@n');
 
 UPDATE account
-SET account_type = 'admin'
+SET account_type = 'Admin'
 WHERE account_email = 'tony@starkent.com';
 
 DELETE FROM account
