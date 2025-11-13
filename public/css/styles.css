@@ -178,7 +178,7 @@ nav a {
 }
 
 
-@media screen and (min-width: 5 00px) {
+@media screen and (min-width: 500px) {
   .details {
     display: grid;
     grid-template-columns: 1fr 1fr;
