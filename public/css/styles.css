@@ -127,7 +127,58 @@ nav ul {
   color: white;
 }
 
-@media screen and (min-width: 600px) {
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+#inv-display {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  list-style: none;
+  padding: 20px;
+  margin: 2rem 0;
+}
+
+#inv-display li {
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#inv-display li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+#inv-display img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.namePrice {
+  margin-top: 0.75rem;
+}
+
+.namePrice h2 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0 0.25rem 0;
+}
+
+.namePrice span {
+  font-weight: bold;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+
+@media screen and (min-width: 5 00px) {
   .details {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -139,4 +190,14 @@ nav ul {
     margin: 20px auto;
   }
 
+  #inv-display {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media screen and (min-width: 800px) {
+  #inv-display {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
