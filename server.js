@@ -31,12 +31,9 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 app.use("/inv", inventoryRoute)
 // Test 500 Route
-app.get(
-  "/trigger-error",
-  utilities.handleErrors(async (req, res, next) => {
-    throw { status: 500, message: "This is an intentional 500 error!" };
-  })
-);
+app.get("/trigger-error", (req, res, next) => {
+  next({ status: 500, message: "This is an intentional 500 error!" });
+});
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
@@ -55,7 +52,7 @@ app.use(async (err, req, res, next) => {
   if (err.status === 404) {
     message = err.message
   } else if (err.status === 500) {
-    message = "Hehe, server go big boom"
+    message = "Hehe, server went boom"
   } else {
     message = "Oh no! There was a crash. Maybe pay attention next time?"
   }
