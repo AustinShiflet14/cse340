@@ -187,7 +187,8 @@ nav a {
 .detail-image img {
   max-width: 500px;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 30px;
+  padding: 10px;
 }
 
 .detail-info {
@@ -216,6 +217,12 @@ nav a {
 
   #inv-display {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  #detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 
 }
