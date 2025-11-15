@@ -177,6 +177,30 @@ nav a {
   font-size: 1.1rem;
 }
 
+#detail-container {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.detail-image img {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.detail-info {
+  max-width: 500px;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: .5rem 0;
+}
+
+
 
 @media screen and (min-width: 500px) {
   .details {
