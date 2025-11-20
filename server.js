@@ -15,6 +15,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/")
 const session = require("express-session")
 const pool = require('./database/')
+const accountRoute = require("./routes/accountRoute")
 
 /* ***********************
  * Middleware
@@ -52,6 +53,8 @@ app.use(static)
 app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 app.use("/inv", inventoryRoute)
+// Account routes
+app.use("/account", accountRoute)
 // Test 500 Route
 app.get("/trigger-error", (req, res, next) => {
   next({ status: 500, message: "This is an intentional 500 error!" });
@@ -85,8 +88,6 @@ app.use(async (err, req, res, next) => {
     nav
   })
 })
-
-
 
 /* ***********************
  * Local Server Information
