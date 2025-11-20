@@ -271,6 +271,92 @@ nav a {
   text-decoration: underline;
 }
 
+/******* Register Page Styles ********/
+.account-register {
+    max-width: 450px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: lightblue;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.account-register h1,
+.account-register-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.account-flash {
+  background-color: #ffe2e2;
+  border: 1px solid #ff5c5c;
+  color: #b30000;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.account-register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.account-register-form label {
+  font-weight: bold;
+}
+
+.account-register-form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+}
+
+#pswdBtn {
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 4px;
+  margin-top: 1em;
+  font-size: small;
+  width: 7rem;
+  text-align: center;
+}
+
+#pswdBtn:hover {
+  background-color: darkcyan;
+  cursor: pointer;
+}
+
+.account-register-btn {
+  padding: 10px;
+  background: darkcyan;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.account-register-btn:hover {
+  background: #047857;
+}
+
+.account-login-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.account-login-link a {
+  font-weight: bold;
+  color: #1d4ed8;
+}
+
+.account-login-link a:hover {
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 500px) {
   .details {
     display: grid;
