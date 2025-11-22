@@ -1,14 +1,19 @@
 const pswdBtn = document.querySelector("#pswdBtn");
 
-pswdBtn.addEventListener("click", function() {
-  const pswdInput = document.getElementById("account_password");
-  const type = pswdInput.getAttribute("type");
+if (pswdBtn) {
+  pswdBtn.addEventListener("click", function () {
+    const pswdInput = document.getElementById("account_password");
 
-  if (type === "password") {
-    pswdInput.setAttribute("type", "text");
-    pswdBtn.textContent = "Hide Password";
-  } else {
-    pswdInput.setAttribute("type", "password");
-    pswdBtn.textContent = "Show Password";
-  }
-});
+    if (!pswdInput) return;
+
+    const type = pswdInput.getAttribute("type");
+
+    if (type === "password") {
+      pswdInput.setAttribute("type", "text");
+      pswdBtn.textContent = "Hide Password";
+    } else {
+      pswdInput.setAttribute("type", "password");
+      pswdBtn.textContent = "Show Password";
+    }
+  });
+}
