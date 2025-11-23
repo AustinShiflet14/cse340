@@ -1,6 +1,6 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
-
+const { validationResult } = require("express-validator")
 const invCont = {}
 
 /* ***************************
@@ -46,6 +46,136 @@ invCont.buildDetailView = async function (req, res, next) {
     detail,
     error: null
   })
+}
+
+/* ***************************
+ *  Build management view
+ * ************************** */
+invCont.buildManagement = async function (req, res, next) {
+  try {
+    const nav = await utilities.getNav()
+    res.render("./inventory/management", {
+      title: "Inventory Management",
+      nav,
+      errors: null
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
+/* ****************************************
+ * Build Add Classification View
+ **************************************** */
+invCont.buildAddClassificationView = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-classification", {
+    title: "Add Classification",
+    nav,
+    errors: null,
+    classification_name: ""
+  })
+}
+
+/* ****************************************
+ * Process Add Classification
+ **************************************** */
+invCont.addClassification = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const { classification_name } = req.body
+
+  // Server-side validation: letters/numbers only, no spaces/special chars
+  const pattern = /^[A-Za-z0-9]+$/
+  if (!pattern.test(classification_name)) {
+    req.flash("notice", "Invalid classification name. No spaces or special characters allowed.")
+    return res.render("./inventory/add-classification", { title: "Add Classification", nav, errors: null, classification_name })
+  }
+
+  try {
+    const regResult = await invModel.addClassification(classification_name)
+    if (regResult) {
+      req.flash("notice", `Classification "${classification_name}" added successfully!`)
+      return res.redirect("/inv/")
+    }
+  } catch (error) {
+    console.error(error)
+    req.flash("notice", "There was an error adding the classification.")
+    return res.render("./inventory/add-classification", { title: "Add Classification", nav, messages: req.flash, errors: null })
+  }
+}
+
+/* ****************************************
+ * Build Add Inventory View
+ **************************************** */
+invCont.buildAddInventoryView = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const classificationList = await utilities.buildClassificationList()
+  res.render("./inventory/add-inventory", {
+    title: "Add Inventory",
+    nav,
+    classificationList,
+    errors: null,
+    // Stickiness defaults
+    inv_make: "",
+    inv_model: "",
+    inv_year: "",
+    inv_price: "",
+    classification_id: "",
+    inv_miles: "",
+    inv_description: "",
+    inv_image: "/images/no-image.png",
+    inv_thumbnail: "/images/no-image.png"
+  })
+}
+
+/* ****************************************
+ * Process Add Inventory
+ **************************************** */
+invCont.addInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const classificationList = await utilities.buildClassificationList(req.body.classification_id)
+
+  const { inv_make, inv_model, inv_year, inv_price, classification_id, inv_miles, inv_description, inv_image, inv_thumbnail, inv_color } = req.body
+
+  // Basic server-side validation
+  if (!inv_make || !inv_model || !inv_year || !inv_price || !classification_id) {
+    req.flash("notice", "Please complete all required fields.")
+    return res.render("./inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+      classificationList,
+      ...req.body // keeps sticky inputs
+    })
+  }
+
+  try {
+    const result = await invModel.addInventory({
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_price,
+      classification_id,
+      inv_miles,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_color
+    })
+
+    if (result) {
+      req.flash("notice", `Vehicle "${inv_make} ${inv_model}" added successfully!`)
+      return res.redirect("/inv/")
+    }
+  } catch (error) {
+    console.error(error)
+    req.flash("notice", "There was an error adding the vehicle.")
+    return res.render("./inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+      classificationList,
+      ...req.body
+    })
+  }
 }
 
 
