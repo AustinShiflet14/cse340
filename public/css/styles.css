@@ -469,7 +469,110 @@ form select:required:valid {
   border-left-color: #28a745; /* green sliver */
 }
 
+/* Inventory Management Page Styles ***************/
+.inventory-management {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+/* Title */
+.inventory-management h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.inventory-management p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.inventory-management a {
+  background: #0077cc;
+  padding: 12px;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background .2s;
+}
+.inventory-management a:hover {
+  background: #005fa3;
+}
+
+/* Classification dropdown */
+.inventory-management page label {
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
+#classificationList {
+  padding: 10px;
+  font-size: 1.5rem;
+  border-radius: 15px;
+  border: 2px solid #0099ff;
+  transition: background .2s;
+  text-align: center;
+}
+
+#classificationList:hover {
+  background-color: #0099ff;
+  border: 2px solid black;
+  color: white;
+  cursor: pointer;
+  transition: background .2s
+}
+
+.inventory-management select {
+  padding: 10px;
+  width: 80%;
+  max-width: 350px;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Inventory Table */
+.inventory-management table {
+  width: 100%;
+  margin-top: 2rem;
+  border-collapse: collapse;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.inventory-management table th {
+  background: #0099ff;
+  color: white;
+  padding: 12px;
+  text-align: center;
+}
+.inventory-management table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.inventory-management table tbody tr a {
+  background-color: white;
+  color: #0099ff;
+  padding: 3px;
+}
+
+.inventory-management table tbody tr a:hover {
+  background-color: #0099ff;
+  color: white;
+  cursor: pointer;
+}
+
+.inventory-management table tr:hover {
+  background: rgba(0,0,0,0.05);
+}
 
 @media screen and (min-width: 500px) {
   .details {

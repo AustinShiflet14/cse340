@@ -36,9 +36,7 @@ router.post(
 // Default account management route
 router.get(
   "/",
-  utilities.handleErrors(accountController.buildAccountManagement)
+  utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement)
 )
-
-
 
 module.exports = router

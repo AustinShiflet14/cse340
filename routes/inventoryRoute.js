@@ -29,4 +29,7 @@ router.post("/add-classification", invController.addClassification)
 router.get("/add-inventory", invController.buildAddInventoryView)
 router.post("/add-inventory", invController.addInventory)
 
+// Get Inventory JSON
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
 module.exports = router;
