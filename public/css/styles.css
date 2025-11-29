@@ -361,7 +361,8 @@ nav a {
 
 .add-classification-form,
 form[action="/inv/add-inventory"],
-form[action="/inv/update"] {
+form[action="/inv/update"], 
+form[action="/inv/delete"] {
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
@@ -375,7 +376,8 @@ form[action="/inv/update"] {
 
 .add-classification-form label,
 form[action="/inv/add-inventory"] label,
-form[action="/inv/update"] label {
+form[action="/inv/update"] label,
+form[action="/inv/delete"] label {
   font-weight: bold;
 }
 
@@ -385,7 +387,10 @@ form[action="/inv/add-inventory"] textarea,
 form[action="/inv/add-inventory"] select,
 form[action="/inv/update"] input,
 form[action="/inv/update"] textarea,
-form[action="/inv/update"] select {
+form[action="/inv/update"] select,
+form[action="/inv/delete"] input,
+form[action="/inv/delete"] textarea,
+form[action="/inv/delete"] select {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #aaa;
@@ -394,13 +399,15 @@ form[action="/inv/update"] select {
 
 .add-classification-form textarea,
 form[action="/inv/add-inventory"] textarea,
-form[action="/inv/update"] textarea {
+form[action="/inv/update"] textarea,
+form[action="/inv/delete"] textarea {
   min-height: 80px;
 }
 
 .add-classification-form button,
 form[action="/inv/add-inventory"] button,
-form[action="/inv/update"] button {
+form[action="/inv/update"] button,
+form[action="/inv/delete"] button {
   padding: 10px;
   background: darkcyan;
   color: white;
@@ -414,7 +421,8 @@ form[action="/inv/update"] button {
 
 .add-classification-form button:hover,
 form[action="/inv/add-inventory"] button:hover,
-form[action="/inv/update"] button:hover {
+form[action="/inv/update"] button:hover,
+form[action="/inv/delete"] button:hover {
   background: #047857;
 }
 
@@ -522,22 +530,7 @@ form select:required:valid {
   text-align: center;
 }
 
-#classificationList {
-  padding: 10px;
-  font-size: 1.5rem;
-  border-radius: 15px;
-  border: 2px solid #0099ff;
-  transition: background .2s;
-  text-align: center;
-}
 
-#classificationList:hover {
-  background-color: #0099ff;
-  border: 2px solid black;
-  color: white;
-  cursor: pointer;
-  transition: background .2s
-}
 
 .inventory-management select {
   padding: 10px;
