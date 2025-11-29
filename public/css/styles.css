@@ -360,7 +360,8 @@ nav a {
 /******* Inventory & Classification Forms ***************/
 
 .add-classification-form,
-form[action="/inv/add-inventory"] {
+form[action="/inv/add-inventory"],
+form[action="/inv/update"] {
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
@@ -373,14 +374,18 @@ form[action="/inv/add-inventory"] {
 }
 
 .add-classification-form label,
-form[action="/inv/add-inventory"] label {
+form[action="/inv/add-inventory"] label,
+form[action="/inv/update"] label {
   font-weight: bold;
 }
 
 .add-classification-form input,
 form[action="/inv/add-inventory"] input,
 form[action="/inv/add-inventory"] textarea,
-form[action="/inv/add-inventory"] select {
+form[action="/inv/add-inventory"] select,
+form[action="/inv/update"] input,
+form[action="/inv/update"] textarea,
+form[action="/inv/update"] select {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #aaa;
@@ -388,12 +393,14 @@ form[action="/inv/add-inventory"] select {
 }
 
 .add-classification-form textarea,
-form[action="/inv/add-inventory"] textarea {
+form[action="/inv/add-inventory"] textarea,
+form[action="/inv/update"] textarea {
   min-height: 80px;
 }
 
 .add-classification-form button,
-form[action="/inv/add-inventory"] button {
+form[action="/inv/add-inventory"] button,
+form[action="/inv/update"] button {
   padding: 10px;
   background: darkcyan;
   color: white;
@@ -406,7 +413,8 @@ form[action="/inv/add-inventory"] button {
 }
 
 .add-classification-form button:hover,
-form[action="/inv/add-inventory"] button:hover {
+form[action="/inv/add-inventory"] button:hover,
+form[action="/inv/update"] button:hover {
   background: #047857;
 }
 

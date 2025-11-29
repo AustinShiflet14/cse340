@@ -2,6 +2,7 @@
 const express = require("express")
 const router = new express.Router() 
 const invController = require("../controllers/invController")
+const invValidate = require("../utilities/inventory-validation")
 const utilities = require("../utilities/") 
 const { body } = require("express-validator")
 
@@ -31,5 +32,15 @@ router.post("/add-inventory", invController.addInventory)
 
 // Get Inventory JSON
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
+// Edit Inventory Item
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView))
+router.post(
+  "/update",
+  invValidate.newInventoryRules(),
+  invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+)
+
 
 module.exports = router;
