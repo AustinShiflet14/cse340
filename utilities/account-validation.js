@@ -1,12 +1,12 @@
 const accountModel = require("../models/account-model")
 const utilities = require(".")
-    const { body, validationResult } = require("express-validator")
-    const validate = {}
+const { body, validationResult } = require("express-validator")
+const validate = {}
 
 /*  **********************************
 *  Registration Data Validation Rules
 * ********************************* */
-validate.registationRules = () => {
+validate.registrationRules = () => {
     return [
         // firstname is required and must be string
         body("account_firstname")
@@ -73,5 +73,41 @@ validate.checkRegData = async (req, res, next) => {
     }
     next()
 }
+
+/* ******************************
+* Login Validation Rules
+****************************** */
+validate.loginRules = () => {
+  return [
+    body("account_email")
+      .trim()
+      .isEmail()
+      .withMessage("Enter a valid email"),
+
+    body("account_password")
+      .trim()
+      .notEmpty()
+      .withMessage("Password is required")
+  ]
+}
+
+/* ******************************
+* Check Login Data
+****************************** */
+validate.checkLoginData = async (req, res, next) => {
+  const errors = validationResult(req)
+
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    return res.render("account/login", {
+      errors,
+      title: "Login",
+      nav,
+      account_email: req.body.account_email
+    })
+  }
+  next()
+}
+
 
 module.exports = validate
