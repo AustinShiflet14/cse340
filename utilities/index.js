@@ -136,6 +136,20 @@ Util.checkJWTToken = (req, res, next) => {
   }
  }
 
+ /* ****************************************
+ * Middleware to allow only Employee/Admin
+ **************************************** */
+Util.checkInventoryAccess = (req, res, next) => {
+  const accountData = res.locals.accountData
+  if (accountData && (accountData.account_type === 'Employee' || accountData.account_type === 'Admin')) {
+    next()
+  } else {
+    req.flash('notice', 'You do not have permission to access that page.')
+    return res.redirect('/account/login')
+  }
+}
+
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

@@ -362,7 +362,9 @@ nav a {
 .add-classification-form,
 form[action="/inv/add-inventory"],
 form[action="/inv/update"], 
-form[action="/inv/delete"] {
+form[action="/inv/delete"], 
+form[action="/account/update"],
+form[action="/account/update-password"] {
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
@@ -377,7 +379,9 @@ form[action="/inv/delete"] {
 .add-classification-form label,
 form[action="/inv/add-inventory"] label,
 form[action="/inv/update"] label,
-form[action="/inv/delete"] label {
+form[action="/inv/delete"] label,
+form[action="/account/update"] label,
+form[action="/account/update-password"] label {
   font-weight: bold;
 }
 
@@ -390,7 +394,13 @@ form[action="/inv/update"] textarea,
 form[action="/inv/update"] select,
 form[action="/inv/delete"] input,
 form[action="/inv/delete"] textarea,
-form[action="/inv/delete"] select {
+form[action="/inv/delete"] select,
+form[action="/account/update"] input,
+form[action="/account/update-password"] input,
+form[action="/account/update"] textarea,
+form[action="/account/update-password"] textarea,
+form[action="/account/update"] select,
+form[action="/account/update-password"] select {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #aaa;
@@ -400,14 +410,18 @@ form[action="/inv/delete"] select {
 .add-classification-form textarea,
 form[action="/inv/add-inventory"] textarea,
 form[action="/inv/update"] textarea,
-form[action="/inv/delete"] textarea {
+form[action="/inv/delete"] textarea,
+form[action="/account/update"] textarea,
+form[action="/account/update-password"] textarea {
   min-height: 80px;
 }
 
 .add-classification-form button,
 form[action="/inv/add-inventory"] button,
 form[action="/inv/update"] button,
-form[action="/inv/delete"] button {
+form[action="/inv/delete"] button,
+form[action="/account/update"] button,
+form[action="/account/update-password"] button {
   padding: 10px;
   background: darkcyan;
   color: white;
@@ -422,8 +436,16 @@ form[action="/inv/delete"] button {
 .add-classification-form button:hover,
 form[action="/inv/add-inventory"] button:hover,
 form[action="/inv/update"] button:hover,
-form[action="/inv/delete"] button:hover {
+form[action="/inv/delete"] button:hover,
+form[action="/account/update"] button:hover,
+form[action="/account/update-password"] button:hover {
   background: #047857;
+}
+
+legend {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 .notice {
