@@ -37,7 +37,8 @@ invCont.buildDetailView = async function (req, res, next) {
   }
 
   const item = data
-  const detail = await utilities.buildDetailHTML(item)
+  const accountData = res.locals.accountData || null
+  const detail = await utilities.buildDetailHTML(item, accountData)
   let nav = await utilities.getNav()
 
   res.render("./inventory/detail", {

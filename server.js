@@ -61,6 +61,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", inventoryRoute)
 // Account routes
 app.use("/account", accountRoute)
+// Favorites routes
+app.use("/favorites", require("./routes/favoritesRoute"))
 // Test 500 Route
 app.get("/trigger-error", (req, res, next) => {
   next({ status: 500, message: "This is an intentional 500 error!" });

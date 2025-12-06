@@ -10,6 +10,7 @@ Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications()
   let list = "<ul>"
   list += '<li><a href="/" title="Home page">Home</a></li>'
+  list += '<li><a href="/favorites" title="Your Favorited Vehicles">Favorites</a></li>'
   data.rows.forEach((row) => {
     list += "<li>"
     list +=
@@ -22,7 +23,7 @@ Util.getNav = async function (req, res, next) {
       "</a>"
     list += "</li>"
   })
-  list += "</ul>"
+  
   return list
 }
 
@@ -37,7 +38,7 @@ Util.buildClassificationGrid = async function(data){
       grid += '<li>'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
-      + 'details"><img src="' + vehicle.inv_thumbnail 
+      + ' details"><img src="' + vehicle.inv_thumbnail 
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
       +' on CSE Motors" /></a>'
       grid += '<div class="namePrice">'
@@ -62,7 +63,7 @@ Util.buildClassificationGrid = async function(data){
 /* **************************************
  * Build the vehicle detail HTML
  ************************************** */
-Util.buildDetailHTML = async function (vehicle) {
+Util.buildDetailHTML = async function (vehicle, accountData) {
   let html = `<section id="detail-container">
       <div class="detail-image">
         <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
@@ -76,8 +77,22 @@ Util.buildDetailHTML = async function (vehicle) {
         <p><strong>Make:</strong> ${vehicle.inv_make}</p>
         <p><strong>Model:</strong> ${vehicle.inv_model}</p>
         <p><strong>Mileage:</strong> ${new Intl.NumberFormat('en-US').format(vehicle.inv_miles)}</p>
-        <p><strong>Description:</strong> ${vehicle.inv_description}</p>
-      </div>
+        <p><strong>Description:</strong> ${vehicle.inv_description}</p>`
+
+  // inside buildDetailHTML, after showing vehicle info
+if (accountData && accountData.account_id) {
+  html += `
+    <button class="favorite-btn" data-inv-id="${vehicle.inv_id}" aria-label="Toggle favorite">
+      <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" 
+           fill="var(--fill-color)" stroke="var(--stroke-color)" stroke-width="2">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+      </svg>
+    </button>
+  `
+}
+
+
+  html += `</div>
     </section>`
 
   return html
@@ -127,16 +142,16 @@ Util.checkJWTToken = (req, res, next) => {
 /* ****************************************
  *  Check Login
  * ************************************ */
- Util.checkLogin = (req, res, next) => {
+Util.checkLogin = (req, res, next) => {
   if (res.locals.loggedin) {
     next()
   } else {
     req.flash("notice", "Please log in.")
     return res.redirect("/account/login")
   }
- }
+}
 
- /* ****************************************
+/* ****************************************
  * Middleware to allow only Employee/Admin
  **************************************** */
 Util.checkInventoryAccess = (req, res, next) => {
@@ -148,7 +163,6 @@ Util.checkInventoryAccess = (req, res, next) => {
     return res.redirect('/account/login')
   }
 }
-
 
 /* ****************************************
  * Middleware For Handling Errors

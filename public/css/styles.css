@@ -597,6 +597,21 @@ form select:required:valid {
   background: rgba(0,0,0,0.05);
 }
 
+.favorite-btn {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 15px;
+  cursor: pointer;
+  background: #333;
+  --fill-color: white;
+
+}
+
+.favorite-btn.favorited {
+  --fill-color: darkcyan;
+}
+
+
 @media screen and (min-width: 500px) {
   .details {
     display: grid;

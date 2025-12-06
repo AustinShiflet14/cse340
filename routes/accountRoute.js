@@ -65,7 +65,7 @@ router.post(
 // Logout route
 router.get(
   "/logout",
-  utilities.checkLogin, // optional: only logged-in users can hit this
+  utilities.checkLogin,
   utilities.handleErrors(accountController.logoutAccount)
 );
 
